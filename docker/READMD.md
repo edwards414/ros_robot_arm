@@ -105,3 +105,7 @@ sudo docker run -ti -v /dev/video0:/dev/video0 -v /dev/video1:/dev/video1 -v /de
 ### dev/console是host的揚聲器（喇叭）
         docker run -it DISPLAY = $DISPLAY --name = firefox -v /tmp/.X11-unix:/tmp/.X11-unix -v dev/console:dev/console -v firefox:test
 
+## docker啟動容器
+
+        docker-compose up prepare
+

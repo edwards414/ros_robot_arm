@@ -22,7 +22,7 @@ Ubuntu安裝ros
 
 ### 9/8 
 - 安裝ubuntu 20.04 juammy
-- - 發現沒有 release ros1 
+- 發現沒有 release ros1 
 - 換ubuntu focal
 
 - 安裝ros1 
@@ -135,12 +135,164 @@ roslaunch ros_aiml start_speech_chat.launch
 
 ![](img/a9.png)
 
+## 10/21
+
+### 使用rosserial 連接stm32
+
+### 10/28
+
+### ubuntu更改系統預設路徑（中文-->英文）
+
+    gedit ~/.config/user-dirs.dirs
+
+新增或修改
+
+    XDG_DESKTOP_DIR="$HOME/Desktop"  
+    XDG_DOWNLOAD_DIR="$HOME/Download"  
+    XDG_TEMPLATES_DIR="$HOME/Templates"  
+    XDG_PUBLICSHARE_DIR="$HOME/Public"  
+    XDG_DOCUMENTS_DIR="$HOME/Documents"  
+    XDG_MUSIC_DIR="$HOME/Music"  
+    XDG_PICTURES_DIR="$HOME/Pictures"  
+    XDG_VIDEOS_DIR="$HOME/Videos"
+
+####   ***須將所有的中文名稱改成英文才會同步
+
+## stm32cubeide無法build,需要配置*.elf的檔案才能build
+
+#### - 1.IDE內部生成project檔案有內含Debug檔案
+#### - 2.STM32CubeMX裡面沒有
+
+### 解決使用IDE內的檔案生成
+
+## STM32CubeIDE 燒入 arm-none-eabi-gdb 
+
+#### 找不到libncurses.so.5(需要額外安裝)
+
+Could not determine GDB version using command 
+
+
+![](img/a11.png)
+
+    sudo apt-get install libncurses5 libncurses5:i386
+    
+    
+## 10/31
+
+stm32 uart 拒絕連線
+
+
+
+## 使用新的workspace_1.13.5
+
+使用stm32cubeide內生成l4r5 init file
+
+
+
+建立inc製作.h檔案
+
+    roslaunch rosserial_stm32 make_library.py 
+
+
+將chatter內的Inc cp -avr 到workspace/rosserial/Inc/
+
+
+
+
+建立
+https://hackmd.io/@JINGCCC/rosserial_1?fbclid=IwAR3HZk-Y4dT-3glBGB2fagztaaS9PIjeFyiFROs-Ebdbmk028D78qVus07Y
+
+環境建制完成
+
+分析msg資料 
+https://blog.csdn.net/qq_38288618/article/details/102931684
+
+## - 或者在run configuration設定
+##　- 生成方式ide(build compile)
+
+
+cp -avr命令将以递归方式复制文件和目录
+
+    https://www.youtube.com/watch?v=cq0HmKrIOt8&ab_channel=LearnembeddedsystemswithGeorge
+
+
+### stm32cubeide無法build'project Explorer失蹤
+
+- 設定workspace import .ioc
+
+- 打開project explorer
+
+- window -> show view
+
+- 設定ln 硬連結(hard link)到workspace
+
+![](img/a10.png)
+
+hard link not allowed for directory
+
+## rosserial
+
+
+``` c
+    /*
+     * rosserial Publisher Example
+     * Prints "hello world!"
+     */
+    
+    // Use the following line if you have a Leonardo or MKR1000
+    //#define USE_USBCON
+    
+    #include <ros.h>
+    #include <std_msgs/String.h>
+    
+    ros::NodeHandle nh;
+    
+    std_msgs::String str_msg;
+    ros::Publisher chatter("chatter", &str_msg); //把自己設定成公開者
+    
+    char hello[13] = "hello world!"; 
+    
+    void setup()
+    {
+        nh.initNode();
+        nh.advertise(chatter);
+        // 是用來告訴ROS節點要廣播（advertise）一個特定主題，讓其他節點可以訂閱它。這個操作通常在ROS節點初始化的過程中完成。
+    }
+    
+    void loop()
+    {
+        str_msg.data = hello;
+        chatter.publish( &str_msg );
+        nh.spinOnce();
+        delay(1000);
+    }
+
+```
+
+## 10/31
+完成uart-stm32連接
+
+需要驗證的東西：
+
+- 如何在stm32上收到host端傳送的資訊
+- 從stm32上publish發布資料,用本機rostopic echo 
+- 確認個節點的關西
+
+
+
+
+### 錯誤訊息
+
+the selection cannot be launch, and there are no recent
+    
+https://www.youtube.com/watch?v=oa95SuiNPcY&t=192s&ab_channel=easycoding
+
 # 建立ros workspace
 
 建立資料夾
 
 ```bash
-mkdir –p ~/catkin_ws/src
+mkdir –p ~/catkin_ws/src        
 ```
 
 ```bash
