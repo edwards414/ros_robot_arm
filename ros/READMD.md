@@ -324,11 +324,28 @@ https://blog.csdn.net/tiancailx/article/details/78910317
 ![](img/a12.jpeg)
 
 ## 11/30
+### moveit 
+- getting start
+- c++ interface
+- python interface
+- commander scripting
+## 12/9
+### 完成fusion360 to urdf
 
+### 主裝完成
 
+![](img/link_all.png)
 
+### 設定節點設定運動旋轉
 
+![](img/set_joint.png)
 
+### 原點設定
+![](img/red_view.png)
+
+### [範例連結](https://youtu.be/Pokyu91hb_o?si=6cvBPNjJHlcICVq2)
+### 支援輸出URDF[github:fusion2urdf](https://github.com/syuntoku14/fusion2urdf)
+### 組合建轉body(myscript)[back2body](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-convert-multiple-assembly-components-back-to-solid-bodies-in-Fusion-360.html)
 
 ## 
 ### 錯誤訊息
