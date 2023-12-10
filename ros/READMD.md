@@ -346,6 +346,7 @@ https://blog.csdn.net/tiancailx/article/details/78910317
 ### [範例連結](https://youtu.be/Pokyu91hb_o?si=6cvBPNjJHlcICVq2)
 ### 支援輸出URDF[github:fusion2urdf](https://github.com/syuntoku14/fusion2urdf)
 ### 組合建轉body(myscript)[back2body](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-convert-multiple-assembly-components-back-to-solid-bodies-in-Fusion-360.html)
+### 模型倒掉[fusion_z軸直立](https://www.autodesk.com.cn/support/technical/article/caas/sfdcarticles/sfdcarticles/CHS/How-to-change-the-orientation-of-the-origin-planes-in-Fusion-360.html)
 
 ## 
 ### 錯誤訊息
