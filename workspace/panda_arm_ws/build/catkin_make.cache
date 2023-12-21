@@ -1,0 +1,2 @@
+panda_moveit_config
+-DCATKIN_DEVEL_PREFIX=/workspace/panda_arm_ws/devel -DCMAKE_INSTALL_PREFIX=/workspace/panda_arm_ws/install -G Unix Makefiles

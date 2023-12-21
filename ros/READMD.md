@@ -20,7 +20,7 @@
 
 Ubuntu安裝ros
 
-### 9/8 
+### 2023/9/8 
 - 安裝ubuntu 20.04 juammy
 - 發現沒有 release ros1 
 - 換ubuntu focal
@@ -42,7 +42,7 @@ Ubuntu安裝ros
 ## turtlesim 啟動畫面
 ![ros_turtlesim](img/a2.png)
 
-### 9/11
+### 2023/9/11
 
 完成使用usb_cam + image_view
 graph
@@ -50,7 +50,7 @@ graph
 ![ros_turtlesim](img/a5.png)
 
      rosrun image_view image_view image:=/usb_cam/image_raw
-### 9/17
+### 2023/9/17
 #### face_tracker_pkg臉部追蹤
 遇到找不到kobuki_gazebo_plugins套件
 導致catkin_make無法正常運行
@@ -62,7 +62,7 @@ graph
 ros版本是notic
 
 notic為ros1的最後一個版本,很多package沒有更新過來
-### 10/15
+### 2023/10/15
 建立ros_aiml
 
 使用PyAIML
@@ -177,7 +177,7 @@ Could not determine GDB version using command
     sudo apt-get install libncurses5 libncurses5:i386
     
     
-## 10/31
+## 2023/10/31
 
 stm32 uart 拒絕連線
 
@@ -269,7 +269,7 @@ hard link not allowed for directory
 
 ```
 
-## 10/31
+## 2023/10/31
 完成uart-stm32連接
 
 需要驗證的東西：
@@ -278,7 +278,7 @@ hard link not allowed for directory
 - 從stm32上publish發布資料,用本機rostopic echo 
 - 確認個節點的關西
 
-## 11/13
+## 2023/11/13
 docker ros melodic建立
 
     docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name=ros-melodic -v /home/fxrbindi/Desktop/ros_robot_arm-main/virtual_robot_arm/parol6_ws/:/parol6_ws ros:melodic
@@ -292,7 +292,7 @@ https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install
 
 ![](img/a13.png)
 
-## 11/25
+## 2023/11/25
 ### 主要完成parol6虛擬rviz檢視手臂
 
 ### tf：transform，ROS中管理3D座標系變換的工具。只要告訴tf兩個相關聯座標系的座標變換訊息，tf會幫你一直記錄這個兩個座標系的座標變換，即使兩個座標系處於運動中。
@@ -323,13 +323,28 @@ https://blog.csdn.net/tiancailx/article/details/78910317
 
 ![](img/a12.jpeg)
 
-## 11/30
+## 2023/11/30
 ### moveit 
 - getting start
 - c++ interface
 - python interface
 - commander scripting
-## 12/9
+## 2023/12/9
+### URDF 說明
+#### 1.藉由原點連接各個link,link之間使用joint做連結
+
+#### - Link : 手臂的臂
+#### - Joint : 關節
+<img src = "img/joint_link.png" width = "500">
+
+#### 2.URDF有父子架構,透過上一層的改變下一層也會跟著改變
+#### 機械手臂上的應用,link部件我們我有分base_link.link0~5,原點（origin）的部份就是base_link,最大的就是base_link,最小是link5,link0旋轉,他的子連結都會旋轉
+
+<img src = "img/parent_child.png" width = "500">
+
+
+
+
 ### 完成fusion360 to urdf
 
 ### 主裝完成
@@ -348,30 +363,117 @@ https://blog.csdn.net/tiancailx/article/details/78910317
 ### 組合建轉body(myscript)[back2body](https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-convert-multiple-assembly-components-back-to-solid-bodies-in-Fusion-360.html)
 ### 模型倒掉[fusion_z軸直立](https://www.autodesk.com.cn/support/technical/article/caas/sfdcarticles/sfdcarticles/CHS/How-to-change-the-orientation-of-the-origin-planes-in-Fusion-360.html)
 
-## 
+### rviz查看
+
+<img src = "img/urdf_rviz_demo.png">
+
+## 2023/12/10
+### 加入moveit外掛模組
+### mo
+<img src = "img/move_group.png" >
+
+
+<img src = "img/moveit_group_ch.jpg" >
+
+
+
+### 設定moveit assistant
+
+### [相關連結](https://docs.ros.org/en/kinetic/api/moveit_tutorials/html/doc/setup_assistant/setup_assistant_tutorial.html)
+
+    roslaunch moveit_setup_assistant setup_assistant.launch
+
+### 使用urdf生成的srm_arm.urdf.xacro檔案
+<img src = "img/moveit_assistant_input.png" >
+
+### 設定self-collisions碰撞點個數（官方推薦設成10,000）
+<img src = "img/self-collision.png" >
+
+### planing group
+<img src = "img/planing_group.png" >
+
+### ROS Control
+<img src = "img/ros_control_msg.png" >
+
+### export
+### 如果是使用su ursr,需要使用root
+
+    sudo chmod a+w 資料夾位置
+
+<img src = "img/moveit_export.png" >
+
+### python 指令控制
+
+<img src = "img/python_command.png" >
+
+#### 將結果紀錄到c   
+    rec c
+#### 換名稱
+    goal = c
+#### 更改第一軸 
+    goal[0] = 0.1
+#### 規劃＆執行
+    plan
+    execute
+# ----------------
+### 2023/12/11
+### 主要學習建立package
+#### package基本架構
+
+    catkin_create_pkg <package name> rospy std_msgs roscpp
+#### 程式補充
+##### - rospy.info()將訊息打印出來
+##### - 第一行需要宣告 #! /user/bin/env python
+##### - 使用sys.argv[1]可以抓取command的參數
+##### - pub.publish(vel)將資料發布出去
+
+    /tu_ws/src/turtle_one/scripts/turtlemove.py
+
+<img src = "img/turtle_pkg_python.png" >
+
+### rosrun
+    rosrun turtle_one turtlemove.py
+### 補充package裡的CMakeList.txt
+#### 可以直接使用化名(python不能用)
+
+    add_executable(turtle_move_node src/turtlemove.cpp)
+
+#### run 
+
+    rosrun turtle_one turtle_move_node
+
+
 ### 錯誤訊息
 
 the selection cannot be launch, and there are no recent
     
 https://www.youtube.com/watch?v=oa95SuiNPcY&t=192s&ab_channel=easycoding
 
-# 建立ros workspace
 
-建立資料夾
+## 2023/12/17
+### small_arm gazebo_rviz_graph
+![Alt text](img/ros_gazebo_rviz_graph.png)
 
-```bash
-mkdir –p ~/catkin_ws/src        
-```
+### small_arm rviz_graph
+![Alt text](img/arm_config_rviz_graph.png)
 
-```bash
-cd ~/catkin_ws/src
-```
-1
+![Alt text](img/panda_arm_demo_gazebo_graph.png)
 
-完成使用usb_cam + image_view
-graph
 
- rosrun image_view image_view image:=/usb_cam/image_raw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 建立ros workspace
 
@@ -478,11 +580,14 @@ print topic or field type
  - ### docker rviz 可以啟動
  - ### dockerfile
  - ### c 語言語法入門
-## 未完成：
-
- - ### 將作者ardiuno code轉成Hal庫
  - ### 建立機械手臂urdf
  - ### 發起pola6手臂urdf
+ - ### moveit assistant
+
+## 未完成：
+ - ### 創pkg去控制arm
+ - ### 將作者ardiuno code轉成Hal庫
+
 ## 錯誤：
  - ### docker /dev特權問題
 su fxrbindi 
@@ -491,6 +596,5 @@ cd virtual_robot_arm/
 cd parol6_ws/
 source devel/setup.bash 
 
-rostopic pub /joint_status sensor_msgs/JointState "{header: {seq: 0, stamp: {secs: 1700833940, nsecs: 84559702}, frame_id: ''}, name: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6'], position: [1.0, 1.0, 2.0, 2.0, 1.0, 0.0], velocity: [], effort: []}" --once
 
 
