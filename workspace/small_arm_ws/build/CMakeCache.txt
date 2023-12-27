@@ -350,6 +350,12 @@ arm_moveit_config_BINARY_DIR:STATIC=/workspace/small_arm_ws/build/arm_moveit_con
 //Value Computed by CMake
 arm_moveit_config_SOURCE_DIR:STATIC=/workspace/small_arm_ws/src/arm_moveit_config
 
+//Value Computed by CMake
+arm_python_interface_BINARY_DIR:STATIC=/workspace/small_arm_ws/build/arm_python_interface
+
+//Value Computed by CMake
+arm_python_interface_SOURCE_DIR:STATIC=/workspace/small_arm_ws/src/arm_python_interface
+
 //The directory containing a CMake configuration file for bond.
 bond_DIR:PATH=/opt/ros/melodic/share/bond/cmake
 
@@ -466,7 +472,7 @@ kdl_conversions_DIR:PATH=/opt/ros/melodic/share/kdl_conversions/cmake
 kdl_parser_DIR:PATH=/opt/ros/melodic/share/kdl_parser/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/melodic/lib/libkdl_conversions.so
+lib:FILEPATH=/opt/ros/melodic/lib/libxmlrpcpp.so
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/melodic/share/message_filters/cmake
@@ -476,6 +482,9 @@ message_generation_DIR:PATH=/opt/ros/melodic/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
+
+//The directory containing a CMake configuration file for moveit_commander.
+moveit_commander_DIR:PATH=/opt/ros/melodic/share/moveit_commander/cmake
 
 //The directory containing a CMake configuration file for moveit_core.
 moveit_core_DIR:PATH=/opt/ros/melodic/share/moveit_core/cmake
@@ -799,7 +808,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=22
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

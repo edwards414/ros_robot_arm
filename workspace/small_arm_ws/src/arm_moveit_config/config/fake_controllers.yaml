@@ -1,7 +1,7 @@
 controller_list:
   - name: fake_small_arm_controller
     type: $(arg fake_execution_type)
-    joints:
+    joints: 
       - joint_0
       - joint_1
       - joint_2

@@ -1,2 +1,2 @@
-arm_moveit_config:moveit_tutorials:srm_urdf_description:test
+arm_moveit_config:arm_python_interface:srm_urdf_description
 -DCATKIN_DEVEL_PREFIX=/workspace/small_arm_ws/devel -DCMAKE_INSTALL_PREFIX=/workspace/small_arm_ws/install -G Unix Makefiles

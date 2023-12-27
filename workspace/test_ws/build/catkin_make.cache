@@ -1,0 +1,2 @@
+import_your_custom_urdf_package_to_ROS-main/movit_robot_arm_sim:import_your_custom_urdf_package_to_ROS-main/robot_arm_urdf
+-DCATKIN_DEVEL_PREFIX=/workspace/test_ws/devel -DCMAKE_INSTALL_PREFIX=/workspace/test_ws/install -G Unix Makefiles

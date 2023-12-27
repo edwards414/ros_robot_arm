@@ -7,5 +7,4 @@
 subdirs("gtest")
 subdirs("arm_moveit_config")
 subdirs("srm_urdf_description")
-subdirs("moveit_tutorials")
-subdirs("test")
+subdirs("arm_python_interface")

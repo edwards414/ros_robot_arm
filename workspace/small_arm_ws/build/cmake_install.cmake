@@ -133,8 +133,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/workspace/small_arm_ws/build/gtest/cmake_install.cmake")
   include("/workspace/small_arm_ws/build/arm_moveit_config/cmake_install.cmake")
   include("/workspace/small_arm_ws/build/srm_urdf_description/cmake_install.cmake")
-  include("/workspace/small_arm_ws/build/moveit_tutorials/cmake_install.cmake")
-  include("/workspace/small_arm_ws/build/test/cmake_install.cmake")
+  include("/workspace/small_arm_ws/build/arm_python_interface/cmake_install.cmake")
 
 endif()
 

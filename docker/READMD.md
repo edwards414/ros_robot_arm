@@ -125,3 +125,5 @@ https://grady1006.medium.com/ubuntu18-04%E5%AE%89%E8%A3%9Ddocker%E5%92%8Cnvidia-
 
 docker run -it -e DISPLAY=$DISPLAY --name=robot_arm -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/fxrbindi/Desktop/ros_robot_arm-main/virtual_robot_arm/:/virtual_robot_arm/ --runtime=nvidia --gpus all ros:melodic
 
+script 
+https://moveit.ros.org/install/docker/

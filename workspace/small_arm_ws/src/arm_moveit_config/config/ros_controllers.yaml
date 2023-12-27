@@ -24,7 +24,7 @@ joint_state_controller:
 controller_list:
   []
 arm_position_controller:
-  type: position_controllers/JointPositionController
+  type: effort_controllers/JointPositionController
   joints:
     - joint_0
     - joint_1
@@ -34,32 +34,32 @@ arm_position_controller:
     - joint_5
   gains:
     joint_0:
-      p: 100
+      p: 1000
       d: 1
       i: 1
       i_clamp: 1
     joint_1:
-      p: 100
+      p: 1000
       d: 1
       i: 1
       i_clamp: 1
     joint_2:
-      p: 100
+      p: 1000
       d: 1
       i: 1
       i_clamp: 1
     joint_3:
-      p: 100
+      p: 1000
       d: 1
       i: 1
       i_clamp: 1
     joint_4:
-      p: 100
+      p: 1000
       d: 1
       i: 1
       i_clamp: 1
     joint_5:
-      p: 100
+      p: 1000
       d: 1
       i: 1
       i_clamp: 1
